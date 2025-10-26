@@ -1,171 +1,119 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="La plateforme tout-en-un pour gérer vos rendez-vous, paiements et notifications WhatsApp. Simple, rapide et moderne.">
-    <meta name="theme-color" content="#00FFAB">
-    
     <title>BookMe — Gérez vos réservations et clients en toute simplicité | Solvexa Labs</title>
-    
-    <!-- External Scripts -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
-    <!-- Styles -->
+    <meta name="description" content="La plateforme tout-en-un pour gérer vos rendez-vous, paiements et notifications WhatsApp. Simple, rapide et moderne.">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Animations */
-        @keyframes blob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-        
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-        
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-    </style>
-    
-    <!-- Tailwind Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
-        // Wait for Tailwind to load before configuring
-        function initTailwindConfig() {
-            if (typeof tailwind !== 'undefined') {
-                tailwind.config = {
-                    theme: {
-                        extend: {
-                            colors: {
-                                solvexa: {
-                                    primary: '#00FFAB',
-                                    dark: '#0A0A0A',
-                                    navy: '#101820'
-                                }
-                            },
-                            fontFamily: {
-                                'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
-                            }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        solvexa: {
+                            primary: '#00FFAB',
+                            dark: '#0A0A0A',
+                            navy: '#101820'
                         }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system']
                     }
                 }
-            } else {
-                setTimeout(initTailwindConfig, 100);
             }
         }
-        initTailwindConfig();
     </script>
 </head>
-
 <body class="font-sans bg-solvexa-navy text-white">
-    <!-- Navigation -->
+    <script src="components/navbar.js"></script>
     <custom-navbar></custom-navbar>
-    
-    <!-- Promotional Banner -->
-    <div class="bg-solvexa-primary/10 border-b border-solvexa-primary/30">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between gap-4">
-            <h4 class="text-sm md:text-base">🚀 Nouvelle version 4.0 disponible ! Essayez-la gratuitement pendant 14 jours</h4>
-            <a href="login.html" class="inline-block bg-solvexa-primary text-solvexa-dark font-bold py-2 px-6 rounded-full hover:bg-solvexa-primary/90 transition-all text-sm">
-                Démarrer l'essai
-            </a>
+
+    <!-- Move banner below navbar -->
+    <div class="banner" style="margin-top: 70px;">
+<div class="banner-content">
+            <h4>🚀 Nouvelle version 4.0 disponible ! Essayez-la gratuitement pendant 14 jours</h4>
+            <a href="login.html" class="btn">Démarrer l'essai</a>
         </div>
     </div>
-
-    <!-- Floating Menu -->
-    <div class="fixed right-8 bottom-8 z-50">
-        <button 
-            id="menuButton" 
-            aria-label="Menu"
-            class="bg-solvexa-primary text-solvexa-dark w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:bg-opacity-90 transition-all hover:scale-110"
-        >
-            <i data-feather="menu" class="w-6 h-6"></i>
-        </button>
-        
-        <nav 
-            id="menuDropdown" 
-            class="hidden absolute bottom-16 right-0 w-64 bg-solvexa-navy rounded-lg shadow-xl border border-white/10 py-2"
-            role="navigation"
-        >
-            <a href="#hero" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center transition-colors">
-                <i data-feather="home" class="w-4 h-4 mr-2"></i>
-                Accueil
-            </a>
-            <a href="#features" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center transition-colors">
-                <i data-feather="zap" class="w-4 h-4 mr-2"></i>
-                Fonctionnalités
-            </a>
-            <a href="#how-it-works" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center transition-colors">
-                <i data-feather="play" class="w-4 h-4 mr-2"></i>
-                Comment ça marche
-            </a>
-            <a href="#pricing" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center transition-colors">
-                <i data-feather="dollar-sign" class="w-4 h-4 mr-2"></i>
-                Tarifs
-            </a>
-            <a href="#testimonials" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center transition-colors">
-                <i data-feather="users" class="w-4 h-4 mr-2"></i>
-                Témoignages
-            </a>
-            <a href="#whatsapp" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center transition-colors">
-                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
-                WhatsApp
-            </a>
-        </nav>
+<div class="fixed right-8 bottom-8 z-50">
+        <div class="relative">
+            <button id="menuButton" class="bg-solvexa-primary text-solvexa-dark w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:bg-opacity-90 transition-all">
+                <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+            <div id="menuDropdown" class="hidden absolute bottom-16 right-0 w-64 bg-solvexa-navy rounded-lg shadow-xl border border-white/10 py-2">
+                <a href="#" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center">
+                    <i data-feather="home" class="w-4 h-4 mr-2"></i>
+                    Akèy
+                </a>
+                <a href="#features" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center">
+                    <i data-feather="zap" class="w-4 h-4 mr-2"></i>
+                    Fonksyonalite
+                </a>
+                <a href="#how-it-works" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center">
+                    <i data-feather="play" class="w-4 h-4 mr-2"></i>
+                    Kouman li mache
+                </a>
+                <a href="#pricing" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center">
+                    <i data-feather="dollar-sign" class="w-4 h-4 mr-2"></i>
+                    Pri
+                </a>
+                <a href="#testimonials" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center">
+                    <i data-feather="users" class="w-4 h-4 mr-2"></i>
+                    Tèmwayaj
+                </a>
+                <a href="#whatsapp" class="block px-4 py-2 hover:bg-solvexa-primary/10 flex items-center">
+                    <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
     </div>
-
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-solvexa-navy to-solvexa-dark">
-        <!-- Background Pattern -->
+<!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-solvexa-navy to-solvexa-dark">
         <div class="absolute inset-0 z-0 opacity-20">
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNGMEYwRjAiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTJzMiAuOSAyIDJ6TTYgMjBjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTJzMiAuOSAyIDJ6TTYgNDBjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTJzMiAuOSAyIDJ6TTIwIDZjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTJzMiAuOSAyIDJ6TTIwIDI2YzAtMi4yLTEuOC00LTQtNHMtNCAxLjgtNCA0IDEuOCA0IDQgNCA0LTEuOCA0LTR6bS0yIDBjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yczIgLjkgMiAyek0yMCA0NmMwLTIuMi0xLjgtNC00LTRzLTQgMS44LTQgNCAxLjggNCA0IDQgNC0xLjggNC00em0tMiAwYzAgMS4xLS45IDItMiAycy0yLS45LTItMnMuOS0yIDItMnMyIC45IDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==')]"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNGMEYwRjAiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTJzLjktMiAyLTJzMiAuOSAyIDJ6TTYgMjBjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTJzLjktMiAyLTJzMiAuOSAyIDJ6TTYgNDBjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTJzLjktMiAyLTJzMiAuOSAyIDJ6TTIwIDZjMC0yLjItMS44LTQtNC00cy00IDEuOC00IDQgMS44IDQgNCA0IDQtMS44IDQtNHptLTIgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTJzLjktMiAyLTJzMiAuOSAyIDJ6TTIwIDI2YzAtMi4yLTEuOC00LTQtNHMtNCAxLjgtNCA0IDEuOCA0IDQgNCA0LTEuOCA0LTR6bS0yIDBjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0ycy45LTIgMi0yczIgLjkgMiAyek0yMCA0NmMwLTIuMi0xLjgtNC00LTRzLTQgMS44LTQgNCAxLjggNCA0IDQgNC0xLjggNC00em0tMiAwYzAgMS4xLS45IDItMiAycy0yLS45LTItMnMuOS0yIDItMnMyIC45IDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==')]"></div>
         </div>
-
         <div class="container mx-auto px-6 z-10 py-20">
             <div class="flex flex-col lg:flex-row items-center gap-12">
-                <!-- Left Content -->
                 <div class="lg:w-1/2">
-                    <!-- Badge -->
                     <div class="inline-flex items-center bg-solvexa-primary/10 border border-solvexa-primary/30 text-solvexa-primary text-sm font-medium px-4 py-2 rounded-full mb-6 animate-pulse">
                         <span class="relative flex h-3 w-3 mr-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-solvexa-primary opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-3 w-3 bg-solvexa-primary"></span>
                         </span>
-                        Nouvelle version 4.0 • Plus rapide, plus complet!
+                        Nouvelle version 3.0 disponible • Plus rapide, plus complet!
                     </div>
                     
-                    <!-- Headline -->
                     <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-solvexa-primary">Gérez vos rendez-vous</span>
                         <br>
                         <span class="text-solvexa-primary">comme un pro</span>
                     </h1>
                     
-                    <!-- Description -->
                     <p class="text-xl text-gray-300 mb-8 max-w-lg">
                         Automatisez vos réservations, rappels et paiements directement sur WhatsApp. Gagnez du temps et augmentez vos revenus.
                     </p>
                     
-                    <!-- CTA Buttons -->
                     <div class="flex flex-wrap gap-4 mb-10">
-                        <a href="login.html" class="bg-solvexa-primary hover:bg-solvexa-primary/90 text-solvexa-navy font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 transform inline-flex items-center gap-2">
+                        <a href="signup.html" class="bg-solvexa-primary hover:bg-solvexa-primary/90 text-solvexa-navy font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 transform">
                             Essai gratuit
-                            <i data-feather="arrow-right" class="w-5 h-5"></i>
+<i data-feather="arrow-right" class="inline ml-2 w-5 h-5"></i>
                         </a>
-                        <a href="#how-it-works" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-8 rounded-full transition-all inline-flex items-center gap-2">
+                        <a href="#how-it-works" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
                             <i data-feather="play" class="w-5 h-5"></i> Voir la démo
                         </a>
                     </div>
                     
-                    <!-- Social Proof -->
                     <div class="flex items-center space-x-6">
                         <div class="flex items-center">
                             <div class="flex -space-x-2 mr-4">
-                                <img src="http://static.photos/people/200x200/1" class="w-10 h-10 rounded-full border-2 border-solvexa-dark object-cover" alt="Client">
-                                <img src="http://static.photos/people/200x200/2" class="w-10 h-10 rounded-full border-2 border-solvexa-dark object-cover" alt="Client">
-                                <img src="http://static.photos/people/200x200/3" class="w-10 h-10 rounded-full border-2 border-solvexa-dark object-cover" alt="Client">
+                                <img src="http://static.photos/people/200x200/1" class="w-10 h-10 rounded-full border-2 border-solvexa-dark" alt="Client">
+                                <img src="http://static.photos/people/200x200/2" class="w-10 h-10 rounded-full border-2 border-solvexa-dark" alt="Client">
+                                <img src="http://static.photos/people/200x200/3" class="w-10 h-10 rounded-full border-2 border-solvexa-dark" alt="Client">
                             </div>
                             <div>
                                 <p class="text-sm font-medium">Recommandé par <span class="text-solvexa-primary">500+ professionnels</span></p>
@@ -175,38 +123,33 @@
                                     <i data-feather="star" class="w-4 h-4 fill-current"></i>
                                     <i data-feather="star" class="w-4 h-4 fill-current"></i>
                                     <i data-feather="star" class="w-4 h-4 fill-current"></i>
-                                    <span class="text-white ml-2 text-sm font-semibold">5.0</span>
+                                    <span class="text-white ml-1 text-sm">5.0</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Right Image/Hero Visual -->
                 <div class="lg:w-1/2 mt-12 lg:mt-0">
                     <div class="relative">
-                        <!-- Animated Gradient Blobs -->
                         <div class="absolute -top-12 -left-12 w-64 h-64 bg-solvexa-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
                         <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
                         
-                        <!-- Dashboard Image -->
                         <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-solvexa-dark/50 backdrop-blur-sm shadow-2xl">
-                            <img src="http://static.photos/office/1200x630/42" alt="BookMe Dashboard" class="w-full h-auto object-cover">
-                            <div class="absolute bottom-6 right-6 bg-solvexa-primary p-3 rounded-full shadow-lg animate-pulse">
-                                <i data-feather="calendar" class="w-6 h-6 text-solvexa-dark"></i>
-                            </div>
+<img src="http://static.photos/office/1200x630/42" alt="BookMe Dashboard" class="w-full h-auto object-cover">
+<div class="absolute bottom-6 right-6 bg-solvexa-primary p-3 rounded-full shadow-lg animate-pulse">
+                        <i data-feather="calendar" class="w-6 h-6"></i>
+</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- How It Works -->
+<!-- How It Works -->
     <section id="how-it-works" class="py-20 bg-solvexa-dark">
-        <div class="container mx-auto px-6">
+<div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">En <span class="text-solvexa-primary">3 étapes simples</span></h2>
-            
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="bg-solvexa-navy p-8 rounded-xl border border-solvexa-primary/10 hover:border-solvexa-primary/30 transition-all">
@@ -237,20 +180,19 @@
             </div>
         </div>
     </section>
-
     <!-- Features -->
     <section id="features" class="py-20 bg-solvexa-navy">
-        <div class="container mx-auto px-6">
+<div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Fonctionnalités <span class="text-solvexa-primary">clés</span></h2>
                 <p class="text-xl text-gray-300 max-w-2xl mx-auto">Tout ce dont vous avez besoin pour gérer votre activité professionnelle</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature: Calendar -->
-                <div class="bg-solvexa-dark p-6 rounded-lg hover:border-solvexa-primary/50 border border-transparent transition-all">
+                <!-- Feature 1 -->
+                <div class="bg-solvexa-dark p-6 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <div class="bg-solvexa-primary/10 p-3 rounded-lg mr-4">
+                        <div class="bg-solvexa-primary/10 p-2 rounded-lg mr-4">
                             <i data-feather="calendar" class="w-6 h-6 text-solvexa-primary"></i>
                         </div>
                         <h3 class="text-lg font-bold">Calendrier intelligent</h3>
@@ -258,10 +200,10 @@
                     <p class="text-gray-300">Visualisez vos rendez-vous par jour, semaine ou mois avec des codes couleurs.</p>
                 </div>
                 
-                <!-- Feature: Payments -->
-                <div class="bg-solvexa-dark p-6 rounded-lg hover:border-solvexa-primary/50 border border-transparent transition-all">
+                <!-- Feature 2 -->
+                <div class="bg-solvexa-dark p-6 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <div class="bg-solvexa-primary/10 p-3 rounded-lg mr-4">
+                        <div class="bg-solvexa-primary/10 p-2 rounded-lg mr-4">
                             <i data-feather="credit-card" class="w-6 h-6 text-solvexa-primary"></i>
                         </div>
                         <h3 class="text-lg font-bold">Paiements intégrés</h3>
@@ -269,10 +211,10 @@
                     <p class="text-gray-300">Acceptez les paiements en ligne via Stripe, MonCash ou Cash App.</p>
                 </div>
                 
-                <!-- Feature: WhatsApp -->
-                <div class="bg-solvexa-dark p-6 rounded-lg hover:border-solvexa-primary/50 border border-transparent transition-all">
+                <!-- Feature 3 -->
+                <div class="bg-solvexa-dark p-6 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <div class="bg-solvexa-primary/10 p-3 rounded-lg mr-4">
+                        <div class="bg-solvexa-primary/10 p-2 rounded-lg mr-4">
                             <i data-feather="smartphone" class="w-6 h-6 text-solvexa-primary"></i>
                         </div>
                         <h3 class="text-lg font-bold">Notifications WhatsApp</h3>
@@ -280,10 +222,10 @@
                     <p class="text-gray-300">Envoyez automatiquement confirmations et rappels à vos clients.</p>
                 </div>
                 
-                <!-- Feature: Client Management -->
-                <div class="bg-solvexa-dark p-6 rounded-lg hover:border-solvexa-primary/50 border border-transparent transition-all">
+                <!-- Feature 4 -->
+                <div class="bg-solvexa-dark p-6 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <div class="bg-solvexa-primary/10 p-3 rounded-lg mr-4">
+                        <div class="bg-solvexa-primary/10 p-2 rounded-lg mr-4">
                             <i data-feather="users" class="w-6 h-6 text-solvexa-primary"></i>
                         </div>
                         <h3 class="text-lg font-bold">Gestion des clients</h3>
@@ -291,10 +233,10 @@
                     <p class="text-gray-300">Conservez l'historique de vos clients et de leurs rendez-vous.</p>
                 </div>
                 
-                <!-- Feature: Public Page -->
-                <div class="bg-solvexa-dark p-6 rounded-lg hover:border-solvexa-primary/50 border border-transparent transition-all">
+                <!-- Feature 5 -->
+                <div class="bg-solvexa-dark p-6 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <div class="bg-solvexa-primary/10 p-3 rounded-lg mr-4">
+                        <div class="bg-solvexa-primary/10 p-2 rounded-lg mr-4">
                             <i data-feather="eye" class="w-6 h-6 text-solvexa-primary"></i>
                         </div>
                         <h3 class="text-lg font-bold">Page publique</h3>
@@ -302,10 +244,10 @@
                     <p class="text-gray-300">Une belle page personnalisée pour vos clients (ex: bookme.app/votrenom).</p>
                 </div>
                 
-                <!-- Feature: Analytics -->
-                <div class="bg-solvexa-dark p-6 rounded-lg hover:border-solvexa-primary/50 border border-transparent transition-all">
+                <!-- Feature 6 -->
+                <div class="bg-solvexa-dark p-6 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <div class="bg-solvexa-primary/10 p-3 rounded-lg mr-4">
+                        <div class="bg-solvexa-primary/10 p-2 rounded-lg mr-4">
                             <i data-feather="bar-chart-2" class="w-6 h-6 text-solvexa-primary"></i>
                         </div>
                         <h3 class="text-lg font-bold">Statistiques</h3>
@@ -325,67 +267,63 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Starter Plan -->
+                <!-- Free Plan -->
                 <div class="bg-solvexa-navy p-8 rounded-xl border border-solvexa-primary/10">
                     <h3 class="text-xl font-bold mb-2">Starter</h3>
                     <p class="text-gray-300 mb-6">Parfait pour essayer</p>
                     <div class="flex items-end mb-6">
                         <span class="text-4xl font-bold">$0</span>
-                        <span class="text-gray-400 ml-2">/mois</span>
+                        <span class="text-gray-400 ml-1">/mois</span>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>5 réservations/mois</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Calendrier de base</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="x" class="w-4 h-4 text-gray-500 mr-2 flex-shrink-0"></i>
+                            <i data-feather="x" class="w-4 h-4 text-gray-500 mr-2"></i>
                             <span class="text-gray-500">Notifications WhatsApp</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="x" class="w-4 h-4 text-gray-500 mr-2 flex-shrink-0"></i>
+                            <i data-feather="x" class="w-4 h-4 text-gray-500 mr-2"></i>
                             <span class="text-gray-500">Paiements en ligne</span>
                         </li>
                     </ul>
-                    <a href="login.html" class="block text-center bg-solvexa-primary/10 hover:bg-solvexa-primary/20 text-solvexa-primary font-bold py-3 px-6 rounded-lg transition-all">
-                        Commencer
-                    </a>
+                    <a href="#" class="block text-center bg-solvexa-primary/10 hover:bg-solvexa-primary/20 text-solvexa-primary font-bold py-3 px-6 rounded-lg transition-all">Commencer</a>
                 </div>
                 
-                <!-- Pro Plan (Featured) -->
-                <div class="bg-solvexa-navy p-8 rounded-xl border border-solvexa-primary relative transform md:scale-105 md:shadow-2xl">
-                    <div class="absolute top-0 right-0 bg-solvexa-primary text-solvexa-dark font-bold px-4 py-1 rounded-bl-lg text-xs uppercase">Populaire</div>
+                <!-- Pro Plan -->
+                <div class="bg-solvexa-navy p-8 rounded-xl border border-solvexa-primary relative transform scale-105 shadow-lg">
+                    <div class="absolute top-0 right-0 bg-solvexa-primary text-solvexa-dark font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg text-xs">POPULAIRE</div>
                     <h3 class="text-xl font-bold mb-2">Pro</h3>
                     <p class="text-gray-300 mb-6">Pour les professionnels</p>
                     <div class="flex items-end mb-6">
                         <span class="text-4xl font-bold">$10</span>
-                        <span class="text-gray-400 ml-2">/mois</span>
+                        <span class="text-gray-400 ml-1">/mois</span>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Réservations illimitées</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Calendrier avancé</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Notifications WhatsApp</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Paiements en ligne</span>
                         </li>
                     </ul>
-                    <a href="login.html" class="block text-center bg-solvexa-primary hover:bg-solvexa-primary/90 text-solvexa-dark font-bold py-3 px-6 rounded-lg transition-all">
-                        Souscrire
-                    </a>
+                    <a href="#" class="block text-center bg-solvexa-primary hover:bg-solvexa-primary/90 text-solvexa-dark font-bold py-3 px-6 rounded-lg transition-all">Souscrire</a>
                 </div>
                 
                 <!-- Business Plan -->
@@ -394,37 +332,34 @@
                     <p class="text-gray-300 mb-6">Pour les équipes</p>
                     <div class="flex items-end mb-6">
                         <span class="text-4xl font-bold">$25</span>
-                        <span class="text-gray-400 ml-2">/mois</span>
+                        <span class="text-gray-400 ml-1">/mois</span>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Tout Pro inclus</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Multi-utilisateurs</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Reporting avancé</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2 flex-shrink-0"></i>
+                            <i data-feather="check" class="w-4 h-4 text-solvexa-primary mr-2"></i>
                             <span>Support prioritaire</span>
                         </li>
                     </ul>
-                    <a href="login.html" class="block text-center bg-solvexa-primary/10 hover:bg-solvexa-primary/20 text-solvexa-primary font-bold py-3 px-6 rounded-lg transition-all">
-                        Souscrire
-                    </a>
+                    <a href="#" class="block text-center bg-solvexa-primary/10 hover:bg-solvexa-primary/20 text-solvexa-primary font-bold py-3 px-6 rounded-lg transition-all">Souscrire</a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Testimonials -->
     <section id="testimonials" class="py-20 bg-solvexa-navy">
-        <div class="container mx-auto px-6">
+<div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Ils nous <span class="text-solvexa-primary">font confiance</span></h2>
                 <p class="text-xl text-gray-300 max-w-2xl mx-auto">Découvrez ce que nos utilisateurs pensent de BookMe</p>
@@ -434,16 +369,16 @@
                 <!-- Testimonial 1 -->
                 <div class="bg-solvexa-dark p-8 rounded-xl">
                     <div class="flex items-center mb-4">
-                        <img src="http://static.photos/people/200x200/1" alt="Marie D." class="w-12 h-12 rounded-full object-cover mr-4">
+                        <img src="http://static.photos/people/200x200/1" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
                         <div>
                             <h4 class="font-bold">Marie D.</h4>
                             <p class="text-sm text-gray-400">Photographe</p>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4">
+                    <p class="text-gray-300">
                         "BookMe a changé ma façon de travailler. Plus besoin de courir après les clients pour confirmer les rendez-vous, tout se fait automatiquement via WhatsApp."
                     </p>
-                    <div class="flex text-yellow-400">
+                    <div class="flex mt-4 text-yellow-400">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -455,16 +390,16 @@
                 <!-- Testimonial 2 -->
                 <div class="bg-solvexa-dark p-8 rounded-xl">
                     <div class="flex items-center mb-4">
-                        <img src="http://static.photos/people/200x200/2" alt="Jean P." class="w-12 h-12 rounded-full object-cover mr-4">
+                        <img src="http://static.photos/people/200x200/2" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
                         <div>
                             <h4 class="font-bold">Jean P.</h4>
                             <p class="text-sm text-gray-400">Coach sportif</p>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4">
+                    <p class="text-gray-300">
                         "L'intégration avec WhatsApp est géniale. Mes clients peuvent réserver directement depuis leur messagerie préférée sans avoir à installer une nouvelle app."
                     </p>
-                    <div class="flex text-yellow-400">
+                    <div class="flex mt-4 text-yellow-400">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -476,16 +411,16 @@
                 <!-- Testimonial 3 -->
                 <div class="bg-solvexa-dark p-8 rounded-xl">
                     <div class="flex items-center mb-4">
-                        <img src="http://static.photos/people/200x200/3" alt="Dr. Sophie L." class="w-12 h-12 rounded-full object-cover mr-4">
+                        <img src="http://static.photos/people/200x200/3" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
                         <div>
                             <h4 class="font-bold">Dr. Sophie L.</h4>
                             <p class="text-sm text-gray-400">Clinique médicale</p>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4">
+                    <p class="text-gray-300">
                         "Le tableau de bord est très intuitif. Nous avons réduit nos rendez-vous manqués de 80% grâce aux rappels automatiques. Un must pour tout professionnel !"
                     </p>
-                    <div class="flex text-yellow-400">
+                    <div class="flex mt-4 text-yellow-400">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -496,58 +431,43 @@
             </div>
         </div>
     </section>
-
     <!-- WhatsApp Integration -->
     <section id="whatsapp" class="py-20 bg-gradient-to-br from-solvexa-primary/10 to-solvexa-navy/90">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <!-- Content -->
-                <div class="lg:w-1/2">
+<div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
                     <h2 class="text-3xl font-bold mb-6">Votre business dans la <span class="text-solvexa-primary">messagerie que tout le monde utilise</span></h2>
                     <p class="text-xl text-gray-300 mb-8">
                         Recevez confirmations, rappels et paiements directement sur WhatsApp. Communiquez avec vos clients sans effort.
                     </p>
                     <a href="https://wa.me/" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-all">
-                        <i data-feather="message-circle" class="mr-2 w-5 h-5"></i> 
-                        Connecter WhatsApp
+                        <i data-feather="message-circle" class="mr-2"></i> Connecter WhatsApp
                     </a>
                 </div>
-                
-                <!-- WhatsApp Mockup -->
                 <div class="lg:w-1/2">
                     <div class="bg-solvexa-dark p-4 rounded-xl max-w-md mx-auto shadow-xl">
-                        <!-- Window Header -->
-                        <div class="bg-gray-800 p-3 rounded-t-lg flex items-center gap-2">
-                            <div class="bg-green-500 w-3 h-3 rounded-full"></div>
-                            <div class="bg-yellow-500 w-3 h-3 rounded-full"></div>
-                            <div class="bg-red-500 w-3 h-3 rounded-full"></div>
+                        <div class="bg-gray-800 p-3 rounded-t-lg flex items-center">
+                            <div class="bg-green-500 w-3 h-3 rounded-full mr-2"></div>
+                            <div class="bg-yellow-500 w-3 h-3 rounded-full mr-2"></div>
+                            <div class="bg-red-500 w-3 h-3 rounded-full mr-2"></div>
                             <div class="flex-1 text-center text-sm font-medium">WhatsApp</div>
                         </div>
-                        
-                        <!-- Chat -->
-                        <div class="p-4 space-y-4 bg-gray-900 rounded-b-lg">
-                            <!-- Client Message -->
-                            <div>
+                        <div class="p-4">
+                            <div class="mb-4">
                                 <div class="bg-gray-700 text-sm p-3 rounded-lg inline-block max-w-xs">
                                     Bonjour, je souhaite prendre rendez-vous pour demain à 15h.
                                 </div>
                             </div>
-                            
-                            <!-- Bot Response -->
-                            <div class="text-right">
+                            <div class="mb-4 text-right">
                                 <div class="bg-solvexa-primary text-sm p-3 rounded-lg inline-block max-w-xs text-solvexa-dark">
                                     Bonjour! Voici le lien pour réserver votre créneau: bookme.app/rdv?slot=demain15h
                                 </div>
                             </div>
-                            
-                            <!-- Client Confirmation -->
-                            <div>
+                            <div class="mb-4">
                                 <div class="bg-gray-700 text-sm p-3 rounded-lg inline-block max-w-xs">
                                     J'ai confirmé mon rendez-vous. Merci!
                                 </div>
                             </div>
-                            
-                            <!-- Final Response -->
                             <div class="text-right">
                                 <div class="bg-solvexa-primary text-sm p-3 rounded-lg inline-block max-w-xs text-solvexa-dark">
                                     Confirmation reçue! Vous recevrez un rappel demain matin. Bonne journée!
@@ -560,31 +480,28 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
+    <!-- CTA -->
     <section class="py-20 bg-solvexa-dark">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6">Prêt à simplifier votre gestion de rendez-vous ?</h2>
             <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Rejoignez des milliers de professionnels qui utilisent BookMe pour automatiser leur activité.
             </p>
-            <a href="login.html" class="inline-block bg-solvexa-primary hover:bg-solvexa-primary/90 text-solvexa-dark font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105">
-                Se connecter
-            </a>
-        </div>
+            <a href="signup.html" class="inline-block bg-solvexa-primary hover:bg-solvexa-primary/90 text-solvexa-dark font-bold py-3 px-8 rounded-full transition-all">
+                Essai gratuit
+</a>
+</div>
     </section>
 
-    <!-- Footer -->
     <custom-footer></custom-footer>
 
-    <!-- Scripts -->
     <script src="components/navbar.js"></script>
     <script src="components/footer.js"></script>
     <script src="script.js"></script>
     <script>
-        // Initialize feather icons
         feather.replace();
         
-        // Menu dropdown toggle
+        // Toggle menu dropdown
         const menuButton = document.getElementById('menuButton');
         const menuDropdown = document.getElementById('menuDropdown');
         
@@ -598,18 +515,7 @@
                 menuDropdown.classList.add('hidden');
             }
         });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && document.querySelector(href)) {
-                    e.preventDefault();
-                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-                    menuDropdown.classList.add('hidden');
-                }
-            });
-        });
     </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
 </body>
 </html>
